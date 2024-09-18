@@ -2,9 +2,23 @@
 	first test project
 */
 
-#include <iostream>
+# include "hello.h"
+# include <iostream>
 
-int main(int args, char *argv[])
+void f_p::SayHello()
 {
-	std::cout<<"Hello, World!"<<std::endl;
+	std::string s = "World";
+	SayHello(s);
+	for (;;)
+    {
+	    std::cout << "Input your name: ";
+	    std::cin >> s;
+	    SayHello(s);
+    }
+
+}
+
+void f_p::SayHello(const std::string &name)
+{
+	std::cout << "Hello, " << name << "!" << std::endl;
 }
