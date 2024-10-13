@@ -11,7 +11,8 @@ int main()
     std::string st;
     std::cout << "Input your polish notation: ";
     std::cin >> st;
-
+    // Хочется иметь стек и калькулятор как отдельные классы, которые взаимодействуют
+    // И это вовсе не похоже на стек, я не вижу, чтобы происходило изъятие значений
     float *lst = new float [st.length()];
     int total = 0;
     int res = 0;
