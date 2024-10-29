@@ -7,22 +7,18 @@
 #include <iostream>
 #include <fstream>
 
-
-void reverse(char *lst);
+void reverse(char *lst, int size);
 void work();
-
 
 int main()
 {
     work();
 }
 
-
-void reverse(char *lst)
+void reverse(char *lst, int size)
 {
-	int x;
-	int size = sizeof(lst);
-    for(int i = 0; i < size - i - 1; i++)
+    char x;
+    for (int i = 0; i < size / 2; i++)
     {
         x = lst[i];
         lst[i] = lst[size - i - 1];
@@ -30,21 +26,21 @@ void reverse(char *lst)
     }
 }
 
-
 void work()
 {
-	std:: ifstream file("test.txt", std::ios_base::binary);
-    int size = std::filesystem::file_size("test.txt");   
+    std::ifstream file("test.txt", std::ios_base::binary);
     
+    int size = std::filesystem::file_size("test.txt");
     char* lst = new char[size];
     
     file.read((char*)lst, size);
     file.close();
 
-    reverse(lst);
+    reverse(lst, size);
 
     std::ofstream file_out("test_out.txt", std::ios_base::binary);
-    file_out.write((char *)lst, sizeof(size));
+    file_out.write(lst, size);
     file_out.close();
+
     delete[] lst;
 }

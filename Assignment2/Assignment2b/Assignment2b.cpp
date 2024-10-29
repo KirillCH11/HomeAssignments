@@ -3,63 +3,48 @@
 */
 
 #include <iostream>
-#include <string>
+#include <stack>
+#include <sstream>
 
-
-float calculator(std::string st);
-void work();
-
-
-int main()
+int main() 
 {
-    work();
-}
+    std::string st;
+    std::stack<float> stack;
+    std::cout << "Input your polish notation: ";
+    std::getline(std::cin, st);
+    std::istringstream sin(st);
+    std::string per;
 
-
-float calculator(std::string st)
-{
-	float *lst = new float [st.length()];
-    int total = 0;
-    int res = 0;
-    
-    for(int i = 0; i < st.length(); ++i)
+    while (sin >> per) 
     {
-        if (st[i] != '+' && st[i] != '-' && st[i] != '*' && st[i] != '/')
-        {   
-	    	lst[i] = st[i] - '0';
-		}
-        else if (st[i] == '+')
+        if (isdigit(per[0]))
         {
-            lst[i] = lst[i - 2] + lst[i - 1];
+            stack.push(std::stod(per));
         }
-        else if (st[i] == '-')
+        else 
         {
-            lst[i] = lst[i - 2] -  lst[i - 1];
-        }
-        else if (st[i] == '*')
-        {
-            lst[i] = lst[i- 2] * lst[i - 1]; 
-        }
-        else if (st[i] == '/')
-        {
-            lst[i] = lst[i - 2] / lst[i - 1];
+            float b = stack.top(); stack.pop();
+            float a = stack.top(); stack.pop(); 
+            
+            if (per == "+") 
+            {
+                stack.push(a + b);
+            } 
+            else if (per == "-") 
+            {
+                stack.push(a - b);
+            } 
+            else if (per == "*") 
+            {
+                stack.push(a * b);
+            } 
+            else if (per == "/") 
+            {
+                stack.push(a / b);
+            }
         }
     }
 
-    return lst[st.length() - 1];
-    delete[] lst;
-}
-
-
-void work()
-{
-	std::string st;
-    std::cout << "Input your polish notation: ";
-    std::cin >> st;
-	
-	float rez;
-	rez = calculator(st);
-   
+    float rez = stack.top();
     std::cout << "Your result is: " << rez << std::endl;
 }
-
