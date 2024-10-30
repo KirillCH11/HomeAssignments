@@ -3,48 +3,54 @@
 */
 
 #include <iostream>
-#include <stack>
+#include <string>
 #include <sstream>
 
-int main() 
+float polish_calculator(std::string val_now) 
 {
-    std::string st;
-    std::stack<float> stack;
-    std::cout << "Input your polish notation: ";
-    std::getline(std::cin, st);
-    std::istringstream sin(st);
+	std::istringstream sin(val_now);
     std::string per;
+    float lst_stack[33];
+    int top_lst = -1; 
 
     while (sin >> per) 
     {
-        if (isdigit(per[0]))
-        {
-            stack.push(std::stod(per));
-        }
-        else 
-        {
-            float b = stack.top(); stack.pop();
-            float a = stack.top(); stack.pop(); 
-            
+    	if (isdigit(per[0]))
+    	{
+    		lst_stack[++top_lst] = std::stod(per);
+    	}
+    	else
+    	{
+            float first = lst_stack[top_lst--]; 
+            float second = lst_stack[top_lst--]; 
+
             if (per == "+") 
             {
-                stack.push(a + b);
-            } 
+                lst_stack[++top_lst] = second + first;
+            }
             else if (per == "-") 
             {
-                stack.push(a - b);
-            } 
+                lst_stack[++top_lst] = second - first;
+            }
             else if (per == "*") 
             {
-                stack.push(a * b);
+                lst_stack[++top_lst] = second * first;
             } 
             else if (per == "/") 
             {
-                stack.push(a / b);
+                lst_stack[++top_lst] = second / first;
             }
         }
     }
+	return lst_stack[top_lst];
+}
 
-    float rez = stack.top();
-    std::cout << "Your result is: " << rez << std::endl;
+int main() 
+{
+    std::string user_input;
+    std::cout << "Input your polish notation: ";
+    std::getline(std::cin, user_input);
+
+	float rez = polish_calculator(user_input);
+	std::cout << "Your result is: " << rez << std::endl;
 }
