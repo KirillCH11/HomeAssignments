@@ -40,7 +40,7 @@ float polish_calculator(std::string val_now)
             {
                 if (first == 0) 
                 {
-                    std::cerr << "Ошибка: деление на ноль" << std::endl;
+                    std::cerr << "Error: Division by zero" << std::endl;
                     delete[] lst_stack;
                     return 0;
                 }
