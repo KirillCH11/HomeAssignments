@@ -8,19 +8,19 @@
 
 float polish_calculator(std::string val_now) 
 {
-	std::istringstream sin(val_now);
+    std::istringstream sin(val_now);
     std::string per;
-    float lst_stack[33];
-    int top_lst = -1; 
+    float* lst_stack = new float[33]; 
+    int top_lst = -1;
 
     while (sin >> per) 
     {
-    	if (isdigit(per[0]))
-    	{
-    		lst_stack[++top_lst] = std::stod(per);
-    	}
-    	else
-    	{
+        if (isdigit(per[0]))
+        {
+            lst_stack[++top_lst] = std::stod(per);
+        }
+        else
+        {
             float first = lst_stack[top_lst--]; 
             float second = lst_stack[top_lst--]; 
 
@@ -38,11 +38,22 @@ float polish_calculator(std::string val_now)
             } 
             else if (per == "/") 
             {
-                lst_stack[++top_lst] = second / first;
+                if (first == 0) 
+                {
+                    std::cerr << "Ошибка: деление на ноль" << std::endl;
+                    delete[] lst_stack;
+                    return 0;
+                }
+                else
+                {
+                	lst_stack[++top_lst] = second / first;
+                }
             }
         }
     }
-	return lst_stack[top_lst];
+    float pred_rez = lst_stack[top_lst];
+    delete[] lst_stack;
+    return pred_rez;
 }
 
 int main() 
@@ -51,6 +62,6 @@ int main()
     std::cout << "Input your polish notation: ";
     std::getline(std::cin, user_input);
 
-	float rez = polish_calculator(user_input);
-	std::cout << "Your result is: " << rez << std::endl;
+    float rez = polish_calculator(user_input);
+    std::cout << "Your result is: " << rez << std::endl;
 }
