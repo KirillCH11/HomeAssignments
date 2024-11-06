@@ -92,3 +92,9 @@ uint Transformer::getIntellect()
 };
 
 Transformer::~Transformer(){};
+
+
+int main()
+{
+    return 0;
+}
