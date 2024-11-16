@@ -1,7 +1,7 @@
 /* Churkin Kirill st129364@student.spbu.ru
 	Lab work 1
 */
-
+// Внеси все по разным файлам. Нельзя засовывать всю программу в main
 
 #include <iostream>
 #include <fstream>
@@ -40,6 +40,7 @@ struct BMP_Info
 class Image_BMP 
 {
 public:
+	// Зачем тогда это класс, если все поля и методы публичные? Спрячь поля
     BMP_Header file_header;
     BMP_Info info_header;
     std::vector<uint8_t> lst;
@@ -91,6 +92,7 @@ void Image_BMP::rotate_clockwise()
         {
             int new_x = y;
             int new_y = new_width - 1 - x;
+			// Следовало создать структуру для пикселя, чтобы делать это одним присваиванием
             lst_new[(new_y * new_height + new_x) * 3] = lst[(y * info_header.width + x) * 3];
             lst_new[(new_y * new_height + new_x) * 3 + 1] = lst[(y * info_header.width + x) * 3 + 1];
             lst_new[(new_y * new_height + new_x) * 3 + 2] = lst[(y * info_header.width + x) * 3 + 2];
@@ -125,6 +127,7 @@ void Image_BMP::rotate_counter_clockwise()
 
 void Image_BMP::Gauss_filter() 
 {
+	// Хочется иметь возможность менять размер ядра
     const float yadr[3][3] = {
         {1/16.0, 2/16.0, 1/16.0},
         {2/16.0, 4/16.0, 2/16.0},
