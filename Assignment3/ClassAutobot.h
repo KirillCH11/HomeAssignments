@@ -16,9 +16,9 @@ public:
  	uint getMask();
  	void setSpeed(uint speed);
  	uint getSpeed();
-private:
+ 	~Autobot();
+protected:
 	uint _mask;
 	uint _speed;
-	~Autobot();
 };
 #endif

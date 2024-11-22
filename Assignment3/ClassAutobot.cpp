@@ -8,7 +8,7 @@
 
 
 
-Autobot::Autobot(){};
+Autobot::Autobot():Transformer(){};
 bool Autobot::transform() 
 {
 	return true;

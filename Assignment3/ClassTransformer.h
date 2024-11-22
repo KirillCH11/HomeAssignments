@@ -6,7 +6,7 @@
 #ifndef ClassTransformer_H   
 #define ClassTransformer_H
 
-
+#include <cstdint>
 class Weapon
 {
 private:
@@ -33,7 +33,7 @@ public:
  	void setIntellect(uint intellect);
  	uint getIntellect();
  	~Transformer();
-private:
+protected:
 	uint _height;
 	uint _weight;
 	uint _power;

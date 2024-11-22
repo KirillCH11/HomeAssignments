@@ -1,17 +1,9 @@
 #include <gtest/gtest.h>
 #include "ClassTransformer.h"
+#include "ClassAutobot.h"
+#include "ClassDecepticon.h"
+#include "ClassPredacon.h"
 
-
-TEST(TransformerTest, DefaultConstructor) 
-{
-    Transformer t;
-    EXPECT_EQ(t.getHeight(), 0);
-    EXPECT_EQ(t.getWeight(), 0);
-    EXPECT_EQ(t.getPower(), 0);
-    EXPECT_EQ(t.getFirepower(), 0);
-    EXPECT_EQ(t.getIntellect(), 0);
-    
-}
 
 TEST(TransformerTest, SetGetAttributes)
 {

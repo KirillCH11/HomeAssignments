@@ -16,9 +16,9 @@ public:
  	uint getMask();
  	void setSpeed(uint speed);
  	uint getSpeed();
+ 	~Predacon();
 private:
 	uint _mask;
 	uint _speed;
-	~Predacon();
 };
 #endif

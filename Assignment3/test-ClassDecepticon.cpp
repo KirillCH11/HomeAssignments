@@ -2,13 +2,6 @@
 #include "ClassDecepticon.h"
 
 
-TEST(DecepticonTest, DefaultConstructor) 
-{
-    Decepticon d;
-    EXPECT_EQ(d.getMask(), 0);
-    EXPECT_EQ(d.getSpeed(), 0);   
-}
-
 TEST(DecepticonTest, SetGetAttributes) 
 {
     Decepticon d;

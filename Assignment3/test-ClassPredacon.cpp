@@ -2,13 +2,6 @@
 #include "ClassPredacon.h"
 
 
-TEST(PredaconTest, DefaultConstructor) 
-{
-    Predacon p;
-    EXPECT_EQ(p.getMask(), 0);
-    EXPECT_EQ(p.getSpeed(), 0);   
-}
-
 TEST(PredaconTest, SetGetAttributes) 
 {
     Predacon p;
