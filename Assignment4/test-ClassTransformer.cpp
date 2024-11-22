@@ -2,7 +2,7 @@
 #include "ClassTransformer.h"
 
 
-TEST(TransformerTest, DefaultConstructor) 
+TEST(TransformerTest, DefaultConstructor)
 {
     Transformer t;
     EXPECT_EQ(t.getHeight(), 0);
@@ -10,7 +10,7 @@ TEST(TransformerTest, DefaultConstructor)
     EXPECT_EQ(t.getPower(), 0);
     EXPECT_EQ(t.getFirepower(), 0);
     EXPECT_EQ(t.getIntellect(), 0);
-    
+
 }
 
 TEST(TransformerTest, SetGetAttributes)
@@ -31,29 +31,29 @@ TEST(TransformerTest, SetGetAttributes)
 
 TEST(TransformerTest, Start_shooting_method)
 {
-	Transformer t;
- 	ASSERT_TRUE(t.start_shooting());
+    Transformer t;
+    ASSERT_TRUE(t.start_shooting());
 }
 
 
 TEST(TransformerTest, Start_moving_method)
 {
-	Transformer t;
- 	ASSERT_TRUE(t.start_moving());
+    Transformer t;
+    ASSERT_TRUE(t.start_moving());
 }
 
 TEST(TransformerTest, Oper_Gr)
 {
     Transformer t1(876, 457, 879, 234, 4325);
-    Transformer t2(436, 123, 7685, 999, 0);
+    Transformer t2(436, 123, 7685, 999, 777);
     ASSERT_TRUE(t1 > t2);
 }
 
 
 TEST(TransformerTest, Oper_Les)
 {
-    Transformer t1(876, 457, 879, 234, 0);
-    Transformer t2(436, 123, 7685, 999, 777);
+    Transformer t1(876, 457, 879, 234, 777);
+    Transformer t2(436, 123, 7685, 999, 4325);
     ASSERT_TRUE(t1 < t2);
 }
 

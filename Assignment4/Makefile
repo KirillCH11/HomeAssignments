@@ -18,7 +18,7 @@ LDGTESTFLAGS = $(LDXXFLAGS) -lgtest -lgtest_main -lpthread
 
 DEPS=$(wildcard *.h)
 
-OBJ=ClassAutobot.o ClassDecepticon.o ClassPredacon.o 
+OBJ=ClassTransformer.o ClassAutobot.o ClassDecepticon.o ClassPredacon.o 
 
 TEST-OBJ=test-ClassTransformer.o test-ClassAutobot.o test-ClassDecepticon.o test-ClassPredacon.o
 
@@ -32,8 +32,8 @@ default: all;
 $(LIBPROJECT): $(OBJ)
 	$(A) $(AFLAGS) $@ $^
 
-$(PROJECT): ClassTransformer.o $(LIBPROJECT)
-	$(CXX) -o $@ ClassTransformer.o $(LDXXFLAGS)
+$(PROJECT): main.o $(LIBPROJECT)
+	$(CXX) -o $@ main.o $(LDXXFLAGS)
 
 
 $(TESTPROJECT): $(LIBPROJECT) $(TEST-OBJ)
