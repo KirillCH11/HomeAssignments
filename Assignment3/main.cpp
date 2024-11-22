@@ -1,8 +1,8 @@
 #include <iostream>
-#include <ClassTransformer.cpp>
+#include "ClassTransformer.h"
 
 int main()
 {
     Transformer transformer;
     return 0;
-}
+};
