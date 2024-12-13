@@ -84,6 +84,7 @@ TEST(TransformerTest, ParameterizedConstructor)
     EXPECT_EQ(t.getIntellect(), 777);
 }
 
+
 TEST(AutobotTest, DefaultConstructor) 
 {
     Autobot a;
@@ -192,14 +193,51 @@ TEST(DecepticonTest, ParameterizedConstructor)
     EXPECT_EQ(d.getSpeed(), 0);
 }
 
+TEST(TransformerTest, print_methods)
+{
+    Transformer t;
+    t.transform();
+    t.openFire();
+    t.ulta(); 
+}
+
+TEST(AutobotTest, print_methods)
+{
+    Autobot a;
+    a.transform();
+    a.openFire();
+    a.ulta(); 
+}
+
+TEST(DecepticonTest, print_methods)
+{
+    Decepticon d;
+    d.transform();
+    d.openFire();
+    d.ulta(); 
+}
+
+TEST(DecepticonTest, print_methods_2)
+{
+    Decepticon d;
+    d.transform();
+    d.openFire();
+    d.ulta(); 
+}
+
 TEST(TransformerTest, VirtualMethods) {
     std::vector<Transformer*> transformers;
-    transformers.push_back(new Autobot(1267, 7777));
+    std::cout << "Cycle print:" << std::endl;
+    transformers.push_back(new Transformer(1267, 7777, 1, 1, 8987));
     transformers.push_back(new Autobot(400, 52));
-    transformers.push_back(new Autobot(987, 327));
-    
     transformers.push_back(new Decepticon(789, 327));
-    transformers.push_back(new Decepticon(1501, 7834));
+    
+    transformers.push_back(new Transformer(457, 547, 1, 1, 427));
+    transformers.push_back(new Autobot(1267, 7777));
+     transformers.push_back(new Decepticon(1501, 7834));
+    
+    transformers.push_back(new Transformer(236, 34, 1, 1, 65));
+    transformers.push_back(new Autobot(987, 327));
     transformers.push_back(new Decepticon(668, 2400));
 
     for (auto transformer : transformers) {
@@ -207,8 +245,14 @@ TEST(TransformerTest, VirtualMethods) {
         transformer->openFire();
         transformer->ulta();
     }
+    
+    std::cout << "Non-Cycle print:" << std::endl;
+    transformers[0]->transform();
+    transformers[0]->openFire();
+    transformers[0]->ulta();
 
     for (auto transformer : transformers) {
         delete transformer;
     }
+    
 }
